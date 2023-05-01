@@ -1,0 +1,111 @@
+/* Premier League hex color codes */
+/* #04f5ff - light blue
+    #e90052 - red
+    #00ff85 - green
+    #38003c - purple */
+
+/* Navbar & Dropdown styling */
+nav {
+    display: flex;
+    justify-content: space-around;
+    height: 90px;
+    width: 100%;
+    background: #38003c;
+    border: 3px solid #00ff85;
+    border-radius: 5px;
+}
+.nav-title {
+    font-size: 1.5em;
+    padding-left: 20px;
+    align-self: center;
+    color: #04f5ff;
+}
+.nav-links {
+    font-size: 1em;
+    padding-right: 20px;
+    align-self: center;
+}
+.link {
+    list-style: none;
+     color: #e90052
+}
+.dropdown-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#dropdown-box {
+    height: 30px;
+    font-size: 1em;
+}
+
+/* Table styling */
+.table-container {
+    border: 3px solid #38003c;
+    border-radius: 5px;
+    height: 500px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.table-title {
+    height: 25px;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 25px;
+}
+.table-grid {
+    width: 100%;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.table-header {
+    background-color: aquamarine;
+}
+.table-body {
+    background-color: burlywood;
+}
+.table-header-row {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+.table-body-row {
+    font-size: 1em;
+}
+td {
+    text-align: center;
+}
+
+/* Team page styling */
+.team-container {
+    border: 1px solid black;
+    height: 500px;
+    width: 100%;
+}
+
+/* Footer styling */
+.footer-container {
+    border: 3px solid #00ff85;
+    background-color: #38003c;
+    color: #ffffff;
+    height: 90px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 5px;
+}
+.soccer-balls {
+    align-self: center;
+    /* background-image: url("../soccerball.jpeg"); */
+    /* background-repeat: repeat-x; */
+}
+.ball-image {
+    height: 25px;
+    width: 25px;
+    
+}
+.developer-tag {
+    font-size: .75em;
+    align-self: center;
+}
