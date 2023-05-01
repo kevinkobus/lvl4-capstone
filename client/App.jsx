@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import SeasonTable from "./components/SeasonTable";
 import Dropdown from "./components/Dropdown";
 import Team from "./components/Team"
+import Player from "./components/Player"
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <Nav />
       <Dropdown />
       {/* <SeasonTable /> */}
-      <Team />
+      {/* <Team /> */}
+      <Player />
       <Footer />
     </div>
   );
