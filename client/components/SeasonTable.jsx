@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "./Context"
 
-{
-  /* map through the selectedSeason array in state to render the teams */
-}
 
-function SeasonTable() {
+function SeasonTable(props) {
+
+  const { seasonList } = useContext(Context)
+
   return (
     <div className="table-container">
+      <div>{seasonList}</div>
       <h3 className="table-title">???? - ???? Table</h3>
       <table className="table-grid">
         <thead className="table-header">
@@ -37,7 +39,10 @@ function SeasonTable() {
           </tr>
         </tbody>
       </table>
-      <p>Pld = games played, Win = 3pts, Draw = 1pt, GF = goals for, GA = goals against, +/- = goal differential</p>
+      <p>
+        Pld = games played, Win = 3pts, Draw = 1pt, GF = goals for, GA = goals
+        against, +/- = goal differential
+      </p>
     </div>
   );
 }
