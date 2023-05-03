@@ -1,14 +1,10 @@
 import React, { useContext } from "react";
-import { Context } from "./Context"
+// import { Context } from "./Context"
 
-
-function SeasonTable(props) {
-
-  const { seasonList } = useContext(Context)
-
+function SeasonTable() {
   return (
     <div className="table-container">
-      <div>{seasonList}</div>
+      <div></div>
       <h3 className="table-title">???? - ???? Table</h3>
       <table className="table-grid">
         <thead className="table-header">

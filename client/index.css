@@ -35,7 +35,12 @@ nav {
 }
 #dropdown-box {
     height: 30px;
+    width: 70px;
     font-size: 1em;
+    background-color: #04f5ff;
+}
+.footnote {
+    font-size: .85em;
 }
 
 /* Table styling */

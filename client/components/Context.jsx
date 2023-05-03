@@ -1,64 +1,80 @@
 import React, { useState, createContext, useEffect } from "react";
-import axios from "axios"
+import axios from "axios";
 
-const Context = createContext()
+const Context = createContext();
 
 function ContextProvider(props) {
 
-  
-  const [seasonArr, setSeasonArr] = useState([])
-  const [yearArr, setYearArr] = useState([])
+  // setting state for the year options in Dropdown
+  const [yearOptions, setYearOptions] = useState([]);
 
-  // const [selectedSeason, setSelectedSeason] = useState("");
+  // Axios GET request to pull from the API and set state for year options
+  const eplYears = {
+    method: "GET",
+    url: "https://api-football-v1.p.rapidapi.com/v3/leagues",
+    params: { id: "39" },
+    headers: {
+      "content-type": "application/octet-stream",
+      "X-RapidAPI-Key": "",
+      "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
+    },
+  };
+  useEffect(() => {
+    axios
+      .request(eplYears)
+      .then((res) => {
+        setYearOptions(res.data.response[0].seasons);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
-//Axios GET request to pull from the API and set state
+  // console.log(yearOptions)
+  // console.log("years:", yearOptions)
 
-// const eplTable = {
-//   method: "GET",
-//   url: "https://api-football-v1.p.rapidapi.com/v3/leagues",
-//   params: { id: "39" },
-//   headers: {
-//     "content-type": "application/octet-stream",
-//     "X-RapidAPI-Key": "fca46",
-//     "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
-//   },
-// };
-
-const seasons = data.response[0].seasons;
-const years = seasons.map(season => season.year);
-console.log(years)
+// reversing the order of years in yearOptions so they display with most currect year on top
 
 
-// useEffect(() => {
-//   axios
-//     .request(eplTable)
-//     .then((res) => {
-//       setSeasonArr(res.data);
-//     })
-//     .catch((err) => console.log(err));
-// }, []);
+  // creating <option> elements to render for season options in dropdown
+  // const yearList = yearOptions.map((year) => (
+  //   <option value={year.year} key={year.year}>
+  //     {year.year}
+  //   </option>
+  // ));
 
-console.log(seasonArr)
+const yearList = yearOptions.reverse().map((year) => (
+    <option value={year.year} key={year.year}>
+      {year.year}
+    </option>
+  ));
 
-const seasonYears = seasonArr.map((data, index) => (
-  <Dropdown
-    key={index}
-    data={data}
-    id={data.start}
-    year={data.year}
-  />
-));
+
+
+// setting state for SeasonTable with default being 0 index of yearList
+    const [table, setTable] = useState([yearList[0]])
+
+//Axios GET request to pull from the API and set state for SeasonTable
+  // const eplTable = {
+  //   method: "GET",
+  //   url: "https://api-football-v1.p.rapidapi.com/v3/standings",
+  //   params: { season: "2022", league: "39" },
+  //   headers: {
+  //     "content-type": "application/octet-stream",
+  //     "X-RapidAPI-Key": "",
+  //     "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
+  //   },
+  // };
+
+
 
   return (
-    <Context.Provider 
+    <Context.Provider
       value={{
-        seasonArr,
-        seasonYears,
+        yearList,
       }}
     >
-        {props.children}
-      </Context.Provider>
-  ) 
+      {props.children}
+    </Context.Provider>
+  );
 }
 
 export { ContextProvider, Context };
