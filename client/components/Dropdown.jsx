@@ -3,16 +3,17 @@ import { Context } from "./Context"
 
 function Dropdown(props) {
 
-  const { yearList } = useContext(Context)
-  // console.log(yearList)
+  const { seasonList } = useContext(Context)
+    
+// need to reverse the order of years so they display with most currect year on top
 
   return (
     <div className="dropdown-container">
-      <label htmlFor="seasons">Pick a season:</label>
+      <label htmlFor="seasons" className="pick-season-dropdown">Pick a season:</label>
       <select name="seasons" id="dropdown-box">
-       {yearList} 
+       {seasonList} 
       </select>
-      <p className="footnote">(Year represents year season started, i.e. 2019 is the 2019 - 2020 season)</p>
+      <p className="footnote">(Year represents year season started, e.g. 2019 is the 2019 - 2020 season)</p>
     </div>
   );
 }

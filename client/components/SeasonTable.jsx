@@ -1,14 +1,16 @@
 import React, { useContext } from "react";
-// import { Context } from "./Context"
+import { Context } from "./Context";
 
-function SeasonTable() {
+function SeasonTable(props) {
+  const { defaultYear, tableResults } = useContext(Context);
+
   return (
     <div className="table-container">
       <div></div>
-      <h3 className="table-title">???? - ???? Table</h3>
+      <h3 className="table-title">{defaultYear} Table</h3>
       <table className="table-grid">
         <thead className="table-header">
-          <tr className="table-header-row">
+          <tr>
             <td>Team</td>
             <td>Pld</td>
             <td>Pts</td>
@@ -21,21 +23,9 @@ function SeasonTable() {
           </tr>
         </thead>
         {/* this will render dynamically and each team needs to be a link */}
-        <tbody className="table-body">
-          <tr className="table-body-row">
-            <td>Arsenal</td>
-            <td>33</td>
-            <td>90</td>
-            <td>30</td>
-            <td>4</td>
-            <td>4</td>
-            <td>100</td>
-            <td>45</td>
-            <td>55</td>
-          </tr>
-        </tbody>
+        <tbody className="table-body">{tableResults}</tbody>
       </table>
-      <p>
+      <p className="footnote">
         Pld = games played, Win = 3pts, Draw = 1pt, GF = goals for, GA = goals
         against, +/- = goal differential
       </p>

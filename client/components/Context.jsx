@@ -4,7 +4,6 @@ import axios from "axios";
 const Context = createContext();
 
 function ContextProvider(props) {
-
   // setting state for the year options in Dropdown
   const [yearOptions, setYearOptions] = useState([]);
 
@@ -28,48 +27,69 @@ function ContextProvider(props) {
       .catch((err) => console.log(err));
   }, []);
 
-  // console.log(yearOptions)
-  // console.log("years:", yearOptions)
+  // creating an array of season years
+  const seasonArr = yearOptions.map((year) => year.year);
 
-// reversing the order of years in yearOptions so they display with most currect year on top
+  // creating <option> elements to render in Dropdown for season options with most current first
+  const revSeasonArr = seasonArr.reverse();
+  // ??? need to find a way for defaultYear to change based on selected season
+  const defaultYear = revSeasonArr[0];
+  const seasonList = revSeasonArr.map((year) => {
+    return (
+      <option value={year} key={year}>
+        {year}
+      </option>
+    );
+  });
 
+  // setting state for SeasonTable with default being 0 index of revSeasonArr
+  const [table, setTable] = useState([]);
 
-  // creating <option> elements to render for season options in dropdown
-  // const yearList = yearOptions.map((year) => (
-  //   <option value={year.year} key={year.year}>
-  //     {year.year}
-  //   </option>
-  // ));
+  //Axios GET request to pull from the API and set state for SeasonTable
+  const eplTable = {
+    method: "GET",
+    url: "https://api-football-v1.p.rapidapi.com/v3/standings",
+    params: { season: "2022", league: "39" },
+    headers: {
+      "content-type": "application/octet-stream",
+      "X-RapidAPI-Key": "",
+      "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
+    },
+  };
 
-const yearList = yearOptions.reverse().map((year) => (
-    <option value={year.year} key={year.year}>
-      {year.year}
-    </option>
-  ));
+  useEffect(() => {
+    axios
+      .request(eplTable)
+      .then((res) => {
+        // console.log(res.data.response[0].league.standings[0])
+        setTable(res.data.response[0].league.standings[0]);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+// console.log(table)
 
-
-
-// setting state for SeasonTable with default being 0 index of yearList
-    const [table, setTable] = useState([yearList[0]])
-
-//Axios GET request to pull from the API and set state for SeasonTable
-  // const eplTable = {
-  //   method: "GET",
-  //   url: "https://api-football-v1.p.rapidapi.com/v3/standings",
-  //   params: { season: "2022", league: "39" },
-  //   headers: {
-  //     "content-type": "application/octet-stream",
-  //     "X-RapidAPI-Key": "",
-  //     "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
-  //   },
-  // };
-
-
+  const tableResults = table.map((teams, index) => {
+    return (
+      <tr key={index} className="table-row">
+        <td>{teams.team.name}</td>
+        <td>{teams.all.played}</td>
+        <td>{teams.points}</td>
+        <td>{teams.all.win}</td>
+        <td>{teams.all.draw}</td>
+        <td>{teams.all.lose}</td>
+        <td>{teams.all.goals.for}</td>
+        <td>{teams.all.goals.against}</td>
+        <td>{teams.goalsDiff}</td>
+      </tr>
+    );
+  });
 
   return (
     <Context.Provider
       value={{
-        yearList,
+        seasonList,
+        defaultYear,
+        tableResults,
       }}
     >
       {props.children}

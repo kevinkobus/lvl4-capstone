@@ -30,17 +30,21 @@ nav {
      color: #e90052
 }
 .dropdown-container {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px 3px 10px 3px;
+}
+.pick-season-dropdown {
+    margin-right: 5px;
 }
 #dropdown-box {
     height: 30px;
     width: 70px;
     font-size: 1em;
+    text-align: center;
     background-color: #04f5ff;
 }
 .footnote {
     font-size: .85em;
+    margin: 5px 3px 5px 3px;
 }
 
 /* Table styling */
@@ -56,30 +60,30 @@ nav {
     height: 25px;
     width: 100%;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 7px;
+    margin-bottom: 7px;
     font-size: 25px;
 }
 .table-grid {
     width: 100%;
     padding-left: 3px;
     padding-right: 3px;
+
 }
 .table-header {
     background-color: aquamarine;
-}
-.table-body {
-    background-color: burlywood;
-}
-.table-header-row {
+    text-align: center;
     font-size: 1.2em;
     font-weight: 600;
 }
-.table-body-row {
-    font-size: 1em;
-}
-td {
+.table-body {
+    background-color: burlywood;
     text-align: center;
+    font-size: .75em;
 }
+/* .table-row {
+    height: 20px;
+} */
 
 /* Team page styling */
 .team-container {
@@ -182,7 +186,7 @@ td {
     border: 3px solid #00ff85;
     background-color: #38003c;
     color: #ffffff;
-    height: 90px;
+    height: 120px;
     width: 100%;
     display: flex;
     flex-direction: column;
