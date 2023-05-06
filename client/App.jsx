@@ -1,27 +1,30 @@
 import React from "react";
-// import { Switch, Route, Link } from "react-router-dom";
+import { DataContext, DataContextProvider } from "./components/DataContext"
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import SeasonTable from "./components/SeasonTable";
 import Dropdown from "./components/Dropdown";
-// import Team from "./components/Team";
-// import Player from "./components/Player";
+import Team from "./components/Team";
+import Player from "./components/Player";
+// import { Switch, Route, Link } from "react-router-dom";
 // import About from "./components/About";
 // import Contact from "./components/Contact";
 // import Home from "./components/Home";
-import { ContextProvider } from "./components/Context"
 
-function App() {
+function App(props) {
+
+  // const {  } = useContext(DataContext)
+
   return (
     <div className="App">
-      <Nav />
-      <ContextProvider>
+      <DataContextProvider>
+        <Nav />
         <Dropdown />
         <SeasonTable />
         {/* <Team /> */}
         {/* <Player /> */}
-      </ContextProvider>
-      <Footer />
+        <Footer />
+      </DataContextProvider>    
     </div>
   );
 }

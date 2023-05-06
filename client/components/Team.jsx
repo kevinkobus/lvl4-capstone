@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { DataContext } from "./DataContext";
 
-
-function Team() {
+function Team(props) {
   
+  const { teamInfoResults } = useContext(DataContext);
 
   return (
       <div className="team-container">
-        <h2 className="team-name">?Team Name?</h2>
-        <img src="" alt="team crest" className="team-crest"/>
+        <h2 className="team-name">?TeamName?</h2>
+        <img src="" alt="team crest" className="team-crest" />
         <h3 className="roster-title">Roster</h3>
         <table className="roster-grid">
         <thead className="roster-header">
@@ -21,10 +22,10 @@ function Team() {
         {/* this will render dynamically and each team needs to be a link */}
         <tbody className="roster-body">
           <tr className="roster-body-row">
-            <td>Bukayo Saka</td>
-            <td>21</td>
-            <td>7</td>
-            <td>Midfielder</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </tbody>
       </table>
