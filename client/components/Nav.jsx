@@ -9,7 +9,6 @@ function Nav() {
         <h1 className="nav-title">English Premier League</h1>
         <ul className="nav-links">
           <li className="link">Home</li>
-          <li className="link">About</li>
         </ul>
       </nav> 
   )

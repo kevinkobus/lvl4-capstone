@@ -6,26 +6,26 @@ const DataContext = createContext();
 function DataContextProvider(props) {
 
   // setting state for the year options in Dropdown
-  const [yearOptions, setYearOptions] = useState([]);
+  // const [yearOptions, setYearOptions] = useState([]);
 
   // Axios GET request to pull from the API and set state for year options
-  const eplYears = {
-    method: "GET",
-    url: "https://api-football-v1.p.rapidapi.com/v3/leagues",
-    params: { id: "39" },
-    headers: {
-      "X-RapidAPI-Key": "0b368e70admshd9b37cd4f2ec0d0p196dfejsndef5043fca46",
-      "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
-    },
-  };
-  useEffect(() => {
-    axios
-      .request(eplYears)
-      .then((res) => {
-        setYearOptions(res.data.response[0].seasons);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  // const eplYears = {
+  //   method: "GET",
+  //   url: "https://api-football-v1.p.rapidapi.com/v3/leagues",
+  //   params: { id: "39" },
+  //   headers: {
+  //     "X-RapidAPI-Key": "",
+  //     "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
+  //   },
+  // };
+  // useEffect(() => {
+  //   axios
+  //     .request(eplYears)
+  //     .then((res) => {
+  //       setYearOptions(res.data.response[0].seasons);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   
 
@@ -39,7 +39,7 @@ function DataContextProvider(props) {
     params: { season: "2022", league: "39" },
     headers: {
       "content-type": "application/octet-stream",
-      "X-RapidAPI-Key": "0b368e70admshd9b37cd4f2ec0d0p196dfejsndef5043fca46",
+      "X-RapidAPI-Key": "",
       "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
     },
   };
@@ -55,31 +55,36 @@ function DataContextProvider(props) {
   }, []);
 // console.log(table)
 
+// ??? creating array of team ids to possibly use as a way to link team and team id
+// ??? should I save this to state?
+// const teamId = table.map((teams) =>  teams.team.id)
+// console.log(teamId)
+
 
   // setting state for Team page if a team is clicked
-  // const [teamInfo, setTeamInfo] = useState([]);
+  const [teamInfo, setTeamInfo] = useState([]);
 
-  // const eplTeam = {
-  //   method: "GET",
-  //   url: "https://api-football-v1.p.rapidapi.com/v3/teams",
-  //   params: { id: "42" },
-  //   headers: {
-  //     "X-RapidAPI-Key": "0b368e70admshd9b37cd4f2ec0d0p196dfejsndef5043fca46",
-  //     "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
-  //   },
-  // };
+  const eplTeam = {
+    method: "GET",
+    url: "https://api-football-v1.p.rapidapi.com/v3/teams",
+    params: { id: "42" },
+    headers: {
+      "X-RapidAPI-Key": "",
+      "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
+    },
+  };
 
-  // useEffect(() => {
-  //   axios
-  //     .request(eplTeam)
-  //     .then((res) => {
-  //       // console.log(res.data.response[0].team)
-  //       setTeamInfo(res.data.response[0].team);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
+  useEffect(() => {
+    axios
+      .request(eplTeam)
+      .then((res) => {
+        // console.log(res.data.response[0].team)
+        setTeamInfo(res.data.response[0].team);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
-// console.log(typeof teamInfo)
+// console.log(teamInfo)
 
   // const teamInfoResults = teamInfo.map((info, index) => (
   //     <Team
@@ -95,8 +100,10 @@ function DataContextProvider(props) {
   return (
     <DataContext.Provider
       value={{
-        yearOptions,
+        // yearOptions,
         table,
+        // teamInfo,
+
 
       }}
     >

@@ -1,14 +1,21 @@
 import React from "react";
 import { DataContext, DataContextProvider } from "./components/DataContext"
 import Nav from "./components/Nav";
-import Footer from "./components/Footer";
-import SeasonTable from "./components/SeasonTable";
-import Dropdown from "./components/Dropdown";
+// import TableDropdown from "./components/TableDropdown";
+// import SeasonTable from "./components/SeasonTable";
+import TeamDropdown from "./components/TeamDropdown"
 import Team from "./components/Team";
-import Player from "./components/Player";
+// import RosterDropdown from "./components/RosterDropdown"
+// import Roster from "./components/Roster"
+import Footer from "./components/Footer";
+
+// Below components are for future development
+// import PlayerDropdown from "./components/PlayerDropdown"
+// import Player from "./components/Player";
+
+
+
 // import { Switch, Route, Link } from "react-router-dom";
-// import About from "./components/About";
-// import Contact from "./components/Contact";
 // import Home from "./components/Home";
 
 function App(props) {
@@ -19,10 +26,12 @@ function App(props) {
     <div className="App">
       <DataContextProvider>
         <Nav />
-        <Dropdown />
-        <SeasonTable />
-        {/* <Team /> */}
-        {/* <Player /> */}
+        {/* <TableDropdown /> */}
+        {/* <SeasonTable /> */}
+        <TeamDropdown />
+        <Team />
+        {/* <RosterDropdown /> */}
+        {/* <Roster /> */}
         <Footer />
       </DataContextProvider>    
     </div>

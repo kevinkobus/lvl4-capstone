@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { DataContext } from "./DataContext";
 
-function Dropdown(props) {
+function TableDropdown(props) {
   const { yearOptions } = useContext(DataContext);
   // console.log(yearOptions)
 
@@ -20,10 +20,10 @@ function Dropdown(props) {
 
   return (
     <div className="dropdown-container">
-      <label htmlFor="seasons" className="pick-season-dropdown">
+      <label htmlFor="seasons" className="pick-a-dropdown">
         Pick a season:
       </label>
-      <select name="seasons" id="dropdown-box">
+      <select name="seasons" className="dropdown-box" id="table-dropdown-box">
         {seasonList}
       </select>
       <p className="footnote">
@@ -34,4 +34,4 @@ function Dropdown(props) {
   );
 }
 
-export default Dropdown;
+export default TableDropdown;

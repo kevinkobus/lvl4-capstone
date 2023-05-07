@@ -1,12 +1,10 @@
 import React from "react";
 import { DataContext } from "./DataContext";
 
-function Player() {
+function Player(props) {
 
   // const {  } = useContext(DataContext);
 
-
-  
   return (
     <div className="player-page-container">
       <div className="player-bio-container">
