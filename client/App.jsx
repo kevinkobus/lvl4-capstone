@@ -1,12 +1,12 @@
 import React from "react";
 import { DataContext, DataContextProvider } from "./components/DataContext"
 import Nav from "./components/Nav";
-// import TableDropdown from "./components/TableDropdown";
-// import SeasonTable from "./components/SeasonTable";
+import TableDropdown from "./components/TableDropdown";
+import SeasonTable from "./components/SeasonTable";
 import TeamDropdown from "./components/TeamDropdown"
 import Team from "./components/Team";
-// import RosterDropdown from "./components/RosterDropdown"
-// import Roster from "./components/Roster"
+import RosterDropdown from "./components/RosterDropdown"
+import Roster from "./components/Roster"
 import Footer from "./components/Footer";
 
 // Below components are for future development
@@ -26,12 +26,12 @@ function App(props) {
     <div className="App">
       <DataContextProvider>
         <Nav />
-        {/* <TableDropdown /> */}
-        {/* <SeasonTable /> */}
+        <TableDropdown />
+        <SeasonTable />
         <TeamDropdown />
         <Team />
-        {/* <RosterDropdown /> */}
-        {/* <Roster /> */}
+        <RosterDropdown />
+        <Roster />
         <Footer />
       </DataContextProvider>    
     </div>

@@ -44,7 +44,7 @@ nav {
 #table-dropdown-box {
   width: 70px;
 }
-#team-dropdown-box {
+#team-dropdown-box, #roster-dropdown-box {
     width: 160px;
   }
 .footnote {
@@ -56,6 +56,7 @@ nav {
 .table-container {
   border: 3px solid #38003c;
   border-radius: 5px;
+  background-color: rgba(215, 213, 213, 0.846);
   height: 500px;
   width: 100%;
   margin-top: 10px;
@@ -85,36 +86,54 @@ nav {
   text-align: center;
   font-size: 0.75em;
 }
-/* .table-row {
-    height: 20px;
-} */
 
 /* Team page styling */
 .team-container {
   border: 3px solid #38003c;
+  background-color: rgba(215, 213, 213, 0.846);
   border-radius: 5px;
   height: 500px;
   width: 100%;
   margin-top: 10px;
   margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  justify-items: center;
+  align-content: center;
 }
-.roster-grid {
+/* .left-side {
+  border: 1px solid red;
+} */
+/* .right-side {
+  border: 1px solid red;
+} */
+
+.team-name {
+  height: 25px;
   width: 100%;
-  padding-left: 3px;
-  padding-right: 3px;
+  margin-top: 10px;
+  font-size: 25px;
+  text-align: center;
 }
-.roster-header {
-  background-color: aquamarine;
+.crest-image {
+  /* border: 1px solid red; */
+  margin-left: 45px;
 }
-.roster-body {
-  background-color: burlywood;
+.stadium-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
 }
-.roster-header-row {
-  font-size: 1.2em;
-  font-weight: 600;
-}
-.roster-body-row {
-  font-size: 1em;
+
+/* Roster page styling */
+.roster-container {
+  border: 3px solid #38003c;
+  background-color: rgba(215, 213, 213, 0.846);
+  border-radius: 5px;
+  height: 720px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .roster-title {
   height: 25px;
@@ -123,19 +142,27 @@ nav {
   margin-top: 10px;
   font-size: 25px;
 }
-.team-name {
-  height: 25px;
+.roster-grid {
   width: 100%;
-  text-align: center;
-  margin-top: 10px;
-  font-size: 25px;
+  padding-left: 3px;
+  padding-right: 3px;
 }
-.team-crest {
-  /* border: 1px solid red; */
+.roster-header {
+  background-color: aquamarine;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+.roster-body {
+  background-color: burlywood;
+  text-align: center;
+  font-size: 0.75em;
 }
 
+
+
 /* Player page styling */
-.player-page-container {
+
+/* .player-page-container {
   border: 3px solid #38003c;
   border-radius: 5px;
   height: 570px;
@@ -183,7 +210,7 @@ nav {
 }
 .player-stat-row {
   font-size: 1em;
-}
+} */
 
 /* Footer styling */
 .footer-container {

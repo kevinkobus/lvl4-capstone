@@ -7,7 +7,7 @@ function SeasonTable(props) {
 
   const tableResults = table.map((teams, index) => {
     return (
-      <tr key={index} className="table-row">
+      <tr key={index}>
         <td id={teams.team.id}>{teams.team.name}</td>
         <td>{teams.all.played}</td>
         <td>{teams.points}</td>
@@ -20,7 +20,7 @@ function SeasonTable(props) {
       </tr>
     );
   });
-  // console.log(tableResults)
+
 
   return (
     <div className="table-container">
