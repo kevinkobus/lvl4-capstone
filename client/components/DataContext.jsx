@@ -4,9 +4,20 @@ import axios from "axios";
 const DataContext = createContext();
 
 function DataContextProvider(props) {
-
   // setting state for the year options in Dropdown
   const [yearOptions, setYearOptions] = useState([]);
+
+  const seasonArr = yearOptions.map((year) => year.year);
+  const revSeasonArr = seasonArr.reverse();
+
+  // mapping through revSeasonArr and returning the years to display in the dropdown
+  const seasonList = revSeasonArr.map((year) => {
+    return (
+      <option value={year} key={year}>
+        {year}
+      </option>
+    );
+  });
 
   // Axios GET request to pull from the API and set state for year options
   const eplYears = {
@@ -27,7 +38,17 @@ function DataContextProvider(props) {
       .catch((err) => console.log(err));
   }, []);
 
-  // setting state for SeasonTable with default being 0 index of revSeasonArr
+  //  setting state for the selected season
+  const [selectedSeason, setSelectedSeason] = useState(revSeasonArr[0]);
+
+  // handling change to the season dropdown
+  //   const handleClick = (e) => {
+  //     const { value, selectedIndex } = e.target;
+  //     setSelectedSeason([value]: selectedIndex,)
+  //   }
+  // console.log(selectedSeason)
+
+  // setting state for SeasonTable
   const [table, setTable] = useState([]);
 
   // Axios GET request to pull from the API and set state for SeasonTable
@@ -84,39 +105,40 @@ function DataContextProvider(props) {
   // console.log(teamInfo);
   // console.log(typeof teamInfo)
 
-// setting state for Roster page if a team is clicked
-const [rosterInfo, setRosterInfo] = useState([]);
+  // setting state for Roster page if a team is clicked
+  const [rosterInfo, setRosterInfo] = useState([]);
 
-const eplRoster = {
-  method: "GET",
-  url: "https://api-football-v1.p.rapidapi.com/v3/players/squads?team=42",
-  params: { team: "42" },
-  headers: {
-    "X-RapidAPI-Key": "0b368e70admshd9b37cd4f2ec0d0p196dfejsndef5043fca46",
-    "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
-  },
-};
+  const eplRoster = {
+    method: "GET",
+    url: "https://api-football-v1.p.rapidapi.com/v3/players/squads?team=42",
+    params: { team: "42" },
+    headers: {
+      "X-RapidAPI-Key": "",
+      "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
+    },
+  };
 
-useEffect(() => {
-  axios
-    .request(eplRoster)
-    .then((res) => {
-      // console.log(res.data.response[0].players)
-      setRosterInfo(res.data.response[0].players);
-    })
-    .catch((err) => console.log(err));
-}, []);
-// console.log(rosterInfo);
-// console.log(typeof rosterInfo)
+  useEffect(() => {
+    axios
+      .request(eplRoster)
+      .then((res) => {
+        // console.log(res.data.response[0].players)
+        setRosterInfo(res.data.response[0].players);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+  // console.log(rosterInfo);
+  // console.log(typeof rosterInfo)
 
   return (
     <DataContext.Provider
       value={{
-        yearOptions,
+        // yearOptions,
+        seasonList,
         table,
         teamInfo,
         rosterInfo,
-      
+        // handleClick,
       }}
     >
       {props.children}

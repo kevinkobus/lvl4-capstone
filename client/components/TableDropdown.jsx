@@ -2,28 +2,20 @@ import React, { useContext } from "react";
 import { DataContext } from "./DataContext";
 
 function TableDropdown(props) {
-  const { yearOptions } = useContext(DataContext);
-  // console.log(yearOptions)
+  const { seasonList, handleClick } = useContext(DataContext);
 
-  // mapping through yearOptions to pull out the years and then reversing it so it has the most recent season first
-  const seasonArr = yearOptions.map((year) => year.year);
-  const revSeasonArr = seasonArr.reverse();
-
-  // mapping through revSeasonArr and returning the years to display in the dropdown
-  const seasonList = revSeasonArr.map((year) => {
-    return (
-      <option value={year} key={year}>
-        {year}
-      </option>
-    );
-  });
 
   return (
     <div className="dropdown-container">
       <label htmlFor="seasons" className="pick-a-dropdown">
         Pick a season:
       </label>
-      <select name="seasons" className="dropdown-box" id="table-dropdown-box">
+      <select
+        name="seasons"
+        className="dropdown-box"
+        id="table-dropdown-box"
+        onClick={handleClick}
+      >
         {seasonList}
       </select>
       <p className="footnote">
