@@ -14,8 +14,8 @@ dist-ssr
 
 package-lock.json
 package.json
-vite.config.json
-eslintrc.cjs
+vite.config.js
+.eslintrc.cjs
 
 # Editor directories and files
 .vscode/*
